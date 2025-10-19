@@ -1,8 +1,11 @@
-# Top-of-atmosphere radiation fields over the last millennium reconstructed from proxies
+# Energy budget reconstructed from proxies
 
-This repository hosts the code for Stiller & Hakim (2025), "Top-of-atmosphere radiation fields over the last millennium reconstructed from proxies". The preprint is [available online](https://arxiv.org/abs/2510.09896). For a detailed description of the algorithms used for the reconstruction (LIM, EnKF, PSMs), refer to the supplement.
+![Left: Global-mean surface temperature. Right: Context for recent energy imbalance trend.](header.png)
 
-> Earth's energy imbalance at the top of the atmosphere is a key climate system metric, but its variability is poorly constrained by the short observational record and large uncertainty in coupled climate models. While existing ocean heat content reconstructions offer a longer perspective, they cannot separate the contributions of shortwave and longwave radiation, obscuring the underlying processes. We extend the energy budget record by reconstructing the top-of-atmosphere radiation and related surface variables over the last millennium (850--2000 CE). Our method combines proxy data and model dynamics using seasonal, gridded data assimilation, exploiting the covariance of radiation with proxies sensitive to surface temperatures. The method validates well in a pseudoproxy experiment and against instrumental observations. We find that a last-millennium cooling trend coincides with heat loss that gradually slowed, although there are intermittent multidecadal periods of energy gain. The cooling trend is associated with a southwestward shift of Indo--Pacific convection and growth of sea ice, with seasonal sea ice trends following orbital-scale changes in polar insolation. We also find that the upper-ocean heat content following large volcanic eruptions does not begin to recover until 5--10 years later, suggesting the initiation of the Little Ice Age by decadally-paced eruptions in the early 1100s and late 1200s. Indeed, the latter period marks the decade of largest energy loss over the last millennium. Our reconstruction reveals that the energy imbalance for all 20-yr periods after 1980 is unprecedented in the pre-industrial period.
+This repository hosts the code for Stiller & Hakim (2025), "Top-of-atmosphere radiation fields over the last millennium reconstructed from proxies". The preprint is [available online](https://arxiv.org/abs/2510.09896). For a detailed description of the algorithms used for the reconstruction (LIM, EnKF, PSMs), refer to the supplement. The corresponding author is Dominik Stiller (dstiller@uw.edu).
+
+## Abstract
+Earth's energy imbalance at the top of the atmosphere is a key climate system metric, but its variability is poorly constrained by the short observational record and large uncertainty in coupled climate models. While existing ocean heat content reconstructions offer a longer perspective, they cannot separate the contributions of shortwave and longwave radiation, obscuring the underlying processes. We extend the energy budget record by reconstructing the top-of-atmosphere radiation and related surface variables over the last millennium (850–2000 CE). Our method combines proxy data and model dynamics using seasonal, gridded data assimilation, exploiting the covariance of radiation with proxies sensitive to surface temperatures. The method validates well in a pseudoproxy experiment and against instrumental observations. We find that a last-millennium cooling trend coincides with heat loss that gradually slowed, although there are intermittent multidecadal periods of energy gain. The cooling trend is associated with a southwestward shift of Indo–Pacific convection and growth of sea ice, with seasonal sea ice trends following orbital-scale changes in polar insolation. We also find that the upper-ocean heat content following large volcanic eruptions does not begin to recover until 5–10 years later, suggesting the initiation of the Little Ice Age by decadally-paced eruptions in the early 1100s and late 1200s. Indeed, the latter period marks the decade of largest energy loss over the last millennium. Our reconstruction reveals that the energy imbalance for all 20-yr periods after 1980 is unprecedented in the pre-industrial period.
 
 ## Code structure
  * `lmrecon/`: Reconstruction code
@@ -10,9 +13,9 @@ This repository hosts the code for Stiller & Hakim (2025), "Top-of-atmosphere ra
    * `lmrecon/reconstruction.py`: Entry point for all reconstructions
    * `lmrecon/da.py`: Implements online data assimilation
    * `lmrecon/kf.py`: Implements ensemble Kalman filter (EnKF)
-   * `lmrecon/mapper.py`: Implements physical space–EOF space mapper
-   * `lmrecon/psm.py`: Implements proxy system models (PSM)
    * `lmrecon/lim.py`: Implements linear inverse model (LIM)
+   * `lmrecon/psm.py`: Implements proxy system models (PSM)
+   * `lmrecon/mapper.py`: Implements physical space–EOF space mapper
  * `notebooks/`: Analysis and prototyping notebooks
    * `notebooks/figures_paper_StillerHakim2025.ipynb`: Figures for Stiller & Hakim (2025)
  * `jobs/`: PBS jobs for NCAR HPC
@@ -37,4 +40,4 @@ This repository hosts the code for Stiller & Hakim (2025), "Top-of-atmosphere ra
 14. Postprocess the reconstruction using `postprocess_reconstruction.py`. This maps the reconstruction from EOF space into the physical space and computes averages. If used in the previous step, multiple Monte Carlo iterations can be combined using `postprocess_reconstruction_mc.py`.
 15. Analyze the reconstruction using `notebooks/figures_paper_StillerHakim2025.ipynb` or `notebooks/compare_reconstructions.ipynb`.
 
-For each model prior (CMIP6 simulation used to train the LIM), the following steps need to be repeated: fit mapper, calibrate PSM, run reconstruction.
+For each model prior (CMIP6 simulation used to train the LIM), the following steps need to be repeated: compute anomalies, fit mapper, calibrate PSMs, run reconstruction.
