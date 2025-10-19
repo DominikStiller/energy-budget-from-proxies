@@ -1,0 +1,13 @@
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.11.4
+  hooks:
+    - id: ruff
+    - id: ruff-format
+- repo: local
+  hooks:
+    - id: unittest
+      name: unittest
+      entry: pixi run --frozen python -m unittest discover 
+      language: python
+      pass_filenames: false

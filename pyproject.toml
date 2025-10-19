@@ -1,0 +1,106 @@
+[project]
+name = "lmrecon"
+version = "0.1.0"
+requires-python = ">= 3.12"
+authors = [{name = "Dominik Stiller", email = "dstiller@uw.edu"}]
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+pip = "*"
+python = "3.12.*"
+esgf-pyclient = "*"
+ecgtools = "*"
+python-graphviz = "*"
+numpy = ">=2.2"
+xarray = "*"
+pandas = "*"
+bottleneck = "*"
+cmocean = "*"
+cf-xarray = "*"
+h5netcdf = "*"
+flox = "*"
+matplotlib = "*"
+seaborn = "*"
+cartopy = "*"
+nc-time-axis = "*"
+xesmf = "*"
+xgcm = "*"
+pyshtools = "*"
+jupyter = "*"
+ruff = "*"
+intake-esm = "*"
+dask = "*"
+regionmask = "*"
+scikit-learn = "*"
+tqdm = "*"
+numexpr = "*"
+ipython = "*"
+loky = "*"
+arviz = "*"
+pre-commit = "*"
+ncar-jobqueue = "*"
+virtualizarr = ">=2.0"
+kerchunk = "*"
+fastparquet = "*"
+pint-xarray = "*"
+zarr = ">=3.0"
+hvplot = "*"
+geoviews = "*"
+fair = "*"
+climlab = "*"
+
+[tool.pixi.pypi-dependencies]
+lmrecon = { path = ".", editable = true }
+pylipd = { git = "git+https://github.com/LinkedEarth/pylipd.git", rev = "main" }
+pyspharm = { git = "git+https://github.com/jswhit/pyspharm", rev = "master" }
+cfr = { git = "git+https://github.com/DominikStiller/cfr.git", rev = "main" }
+pyleoclim = { git = "git+https://github.com/LinkedEarth/Pyleoclim_util.git", rev = "master" }
+mpsplines = { git = "git+https://github.com/jararias/mpsplines.git", rev = "master" }
+xrscipy = "*"
+pens = "*"
+
+[tool.pixi.target.linux-64.dependencies]
+gridfill = "*"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["*.ipynb", "cesmcases"]
+
+[tool.ruff.lint]
+# Inspired by xarray (https://github.com/pydata/xarray/blob/main/pyproject.toml)
+extend-select = [
+    "F",    # Pyflakes
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "FA",   # flake8-future-annotations
+    "C4",   # flake8-comprehensions
+    "PIE",  # flake8-pie
+    "TC",   # flake8-type-checking
+    "SIM",  # flake8-simplify
+    "RUF",  # Ruff
+]
+ignore = [
+    "E741",   # Ambiguous variable name
+    "E501",   # Line too long,
+    "C408",   # Unnecessary collection call, but xarray prefers dict() for .sel
+    "RUF001", # Ambiguous unicode char
+    "RUF100", # Unused noqa
+    "RUF059", # Unused unpacked variable
+    "SIM108", # Use ternary if-else
+    "SIM300", # Yoda condition (const == var instead of var == const)
+]
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
