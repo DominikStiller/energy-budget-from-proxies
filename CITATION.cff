@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite the accompanying paper
+  (see preferred-citation).
+type: software
+title: Energy budget reconstructed from proxies
+authors:
+  - family-names: Stiller
+    given-names: Dominik
+    email: dstiller@uw.edu
+    affiliation: University of Washington
+    orcid: https://orcid.org/0009-0003-3206-3735
+  - family-names: Hakim
+    given-names: Gregory J.
+    affiliation: University of Washington
+    orcid: https://orcid.org/0000-0001-8486-9739
+license: MIT
+preferred-citation:
+  type: article
+  title: Top-of-atmosphere radiation over the last millennium reconstructed from proxies
+  authors:
+    - family-names: Stiller
+      given-names: Dominik
+      affiliation: University of Washington
+      orcid: https://orcid.org/0009-0003-3206-3735
+    - family-names: Hakim
+      given-names: Gregory J.
+      affiliation: University of Washington
+      orcid: https://orcid.org/0000-0001-8486-9739
+  journal: Journal of Climate
+  year: 2026
+  doi: 10.1175/JCLI-D-25-0568.1
+references:
+  - type: data
+    title: "Last-millennium energy-budget reconstruction from proxies (850–2000 CE): data and code for Stiller & Hakim (2026)"
+    authors:
+      - family-names: Stiller
+        given-names: Dominik
+        affiliation: University of Washington
+        orcid: https://orcid.org/0009-0003-3206-3735
+      - family-names: Hakim
+        given-names: Gregory J.
+        affiliation: University of Washington
+        orcid: https://orcid.org/0000-0001-8486-9739
+    year: 2026
+    doi: 10.5281/zenodo.21088397
